@@ -11,34 +11,20 @@ class Category extends Model
     protected $fillable = [
         'name',
         'alias',
-        'parent'
     ];
-    public static function structureAdd($items)
+
+    public function subCategory()
     {
-
-            $dates = [];
-
-            $dates[] = [
-                 'name' => $items['name'],
-                 'alias' => $items['alias'],
-                 'parent' => null,
-               ];
-               foreach ($items['children'] as $child)
-               {
-
-                   $dates[] = [
-                       'name' => $child['name'],
-                       'alias' => $child['alias'],
-                       'parent' => $items['alias'],
-                   ];
-
-               }
-
-                foreach($dates as $data)
-                {
-                    Category::create($data);
-                }
-
-//      return $data;
+        return $this->hasMany(SubCategory::class, 'parent', 'alias');
     }
+
+    public function posts()
+    {
+        return $this->hasManyThrough(Post::class, SubCategory::class,
+            'parent', 'category',
+            'alias', 'name');
+    }
+
+
+
 }

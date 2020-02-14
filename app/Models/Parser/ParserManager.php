@@ -37,10 +37,11 @@ class ParserManager
     private function getParseStrategyByExtension($extension):ParserStrategyInterface
     {
         $strategyName = $extension . 'Strategy';
-        $strategyClass = __NAMESPACE__ . '\\Strategies\\' .ucwords($strategyName);
+        $strategyClass = __NAMESPACE__ . '\\Strategies\\' . ucwords($strategyName);
         throw_if(!class_exists($strategyClass), \Exception::class,
             "Class do not exist [{$strategyClass}]");
-        return  new $strategyClass ;
+        return new $strategyClass;
+
     }
 
     private function setParseStrategy(ParserStrategyInterface $strategy)

@@ -14,5 +14,14 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
+
+
 });
+Route::get('/index', ['uses' =>'Api\CategoryController@index']);
+
+    Route::get('/{name}', ['uses' =>'Api\CategoryController@show']);
+    Route::get('/{name}/{subname}', ['uses' =>'Api\SubCategoryController@show']);
+    Route::get('/{name}/{subname}/{id}', ['uses' =>'Api\PostController@show']);
+
+

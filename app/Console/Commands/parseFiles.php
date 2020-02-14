@@ -8,6 +8,7 @@ use App\Models\Parser\ParserManager;
 use App\Models\Parser\XMLStrategy;
 use App\Models\Parser\YAMLStrategy;
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 
 
 class parseFiles extends Command
@@ -44,11 +45,17 @@ class parseFiles extends Command
     public function handle()
     {
 
-        $items = new \DirectoryIterator(base_path('Files/'));
+        $items = new \DirectoryIterator(public_path('Files/'));
             foreach ($items as $item)
             {
-                $result = (new ParserManager($item->getPath() .'/'. $item->getFilename(),
-                    ($item->getExtension() != '')?: 'core'))->handle();
+                if ($item->getExtension())
+                {
+                    $result = (new ParserManager($item->getPath() .'/'. $item->getFilename(),
+                        $item->getExtension()))->handle();
+                }else{
+                    continue;
+                }
+
             }
             echo ($result) ? 'Information added successful' . PHP_EOL : 'Something went wrong' . PHP_EOL;
 

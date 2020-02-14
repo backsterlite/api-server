@@ -12,14 +12,9 @@ class Post extends Model
         'category'
     ];
 
-
-    public static function postsAdd($items)
+    public function subCategory()
     {
-        $data = [
-            'title' => $items['title'],
-            'body' => $items['body'],
-            'category' => $items['category']
-        ];
-        self::create($data);
+        return $this->hasOne(SubCategory::class, 'alias', 'category');
     }
+
 }

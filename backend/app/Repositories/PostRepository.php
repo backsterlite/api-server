@@ -24,7 +24,9 @@ class PostRepository extends CoreRepository
     public function show($id)
     {
 
-        return $this->startConditions()->find($id);
+        $post =  $this->startConditions()->find($id);
+        $post['parent_category'] = $post->subCategory->parent;
+        return $post;
     }
 
 

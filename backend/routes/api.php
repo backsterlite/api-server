@@ -18,10 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 });
-Route::get('/index', ['uses' =>'Api\CategoryController@index']);
+Route::get('/index.json', ['uses' =>'Api\CategoryController@index'])->middleware('cors');
 
-    Route::get('/{name}', ['uses' =>'Api\CategoryController@show']);
-    Route::get('/{name}/{subname}', ['uses' =>'Api\SubCategoryController@show']);
-    Route::get('/{name}/{subname}/{id}', ['uses' =>'Api\PostController@show']);
+    Route::get('/{name}.json', ['uses' =>'Api\CategoryController@show'])->middleware('cors');
+    Route::get('/{name}/{subname}.json', ['uses' =>'Api\SubCategoryController@show'])->middleware('cors');
+    Route::get('/{name}/{subname}/{id}.json', ['uses' =>'Api\PostController@show'])->middleware('cors');
 
 

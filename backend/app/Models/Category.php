@@ -22,7 +22,7 @@ class Category extends Model
     {
         return $this->hasManyThrough(Post::class, SubCategory::class,
             'parent', 'category',
-            'alias', 'name');
+            'alias', 'alias');
     }
 
 

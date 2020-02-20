@@ -35,7 +35,13 @@ class SubCategoryRepository extends CoreRepository
 
     public function find($alias)
     {
-        return $this->startConditions()->all()->where('alias', '=',$alias)->first();
+        $subCat = $this->startConditions()->all()->where('alias', '=',$alias)->first();
+        $posts = $subCat->posts;
+        foreach($posts as $post)
+        {
+            $post['parent_category'] = $subCat->parent;
+        }
+        return $posts;
     }
 
 

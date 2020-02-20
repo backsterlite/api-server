@@ -17,4 +17,5 @@ class Post extends Model
         return $this->hasOne(SubCategory::class, 'alias', 'category');
     }
 
+
 }

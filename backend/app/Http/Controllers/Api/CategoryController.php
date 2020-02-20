@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\Category;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class CategoryController extends BaseController
 {
@@ -17,7 +19,13 @@ class CategoryController extends BaseController
     public function index(CategoryRepository $repository)
     {
         $categories = $repository->all();
-        return view('api.category.index', compact('categories'));
+//        return view('api.category.index', compact('categories'));
+        foreach ($categories as $category) {
+            $category['children'] = collect($category->subcategory)->toArray();
+        }
+
+        $categories = $categories->toJson();
+        return $categories;
     }
 
     /**
@@ -28,9 +36,10 @@ class CategoryController extends BaseController
      */
     public function show(CategoryRepository $repository, $name)
     {
-        $category = $repository->find($name);
-        $posts = $repository->show($name);
-        return view('api.category.show', compact('category','posts'));
+        $cat = $repository->find($name);
+        $posts = $cat->posts;
+        $posts = array_reverse($posts->toArray());
+        return $posts;
     }
 
 

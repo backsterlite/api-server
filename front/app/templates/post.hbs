@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <ul class="list-unstyled d-lg-inline-flex mr-2">
+          <li class=" mr-2"><a href="/">Index</a></li>
+          >
+          <li class=" ml-2 mr-2"><LinkTo @route="category" @model={{@model.parent_category}}>{{@model.parent_category}}</LinkTo></li>
+          >
+          <li class=" ml-2 mr-2"><LinkTo @route="subcategory" @models={{array @model.parent_category @model.category}}>{{@model.category}}</LinkTo></li>
+          >
+          <li class=" ml-2 mr-2">{{@model.title}}</li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <div class="card bg-light mb-3">
+          <div class="card-header">POST</div>
+          <div class="card-body">
+          <h5 class="card-title">{{@model.title}}</h5>
+          <p class="card-text">{{@model.body}}</p>
+          <p class="card-text"><small class="text-muted">{{@model.category}}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

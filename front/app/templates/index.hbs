@@ -1,0 +1,23 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-8">
+    <ul class="list-unstyled">
+      <li>Index</li>
+    </ul>
+  </div>
+<div class="col-md-8 offset-md-2">
+<ul class="list-unstyled list-group">
+  {{#each @model as |res|}}
+<li class="list-group-item"><LinkTo @route="category" @model={{res.alias}}>{{res.name}}</LinkTo></li>
+<li>
+  <ul>
+    {{#each res.children as |rest|}}
+    <li class="list-group-item"><LinkTo @route="subcategory" @models={{ array rest.parent rest.alias}}>{{rest.name}}</LinkTo></li>
+    {{/each}}
+  </ul>
+</li>
+  {{/each}}
+</ul>
+</div>
+</div>
+</div>

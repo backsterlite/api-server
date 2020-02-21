@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="list-unstyled d-lg-inline-flex mr-2">
+        <li class=" mr-2"><a href="/">Index</a></li>
+        >
+        <li class=" ml-2 mr-2">{{@model.0.laravel_through_key}}</li>
+      </ul>
+    </div>
+    <div class="col-md-10/offset-md-1">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>title</th>
+            <th>body</th>
+            <th>category</th>
+            <th>Base_category</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each @model as |post|}}
+          <tr>
+            <td>{{post.id}}</td>
+            <td><LinkTo @route="post" @models={{ array post.laravel_through_key post.category post.id}}>{{post.title}}</LinkTo></td>
+            <td width="600">{{post.body}}</td>
+            <td>{{post.category}}</td>
+            <td>{{post.laravel_through_key}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

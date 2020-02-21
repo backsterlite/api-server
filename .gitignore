@@ -12,29 +12,29 @@
 /backend/npm-debug.log
 /backend/yarn-error.log
 #----------------------------------------------------------------------------
-#frontend
+#front
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/frontend/dist/
-/frontend/tmp/
+/front/dist/
+/front/tmp/
 
 # dependencies
-/frontend/bower_components/
-/frontend/node_modules/
+/front/bower_components/
+/front/node_modules/
 
 # misc
-/frontend/.env*
-/frontend/.pnp*
-/frontend/.sass-cache
-/frontend/connect.lock
-/frontend/coverage/
-/frontend/libpeerconnection.log
-/frontend/npm-debug.log*
-/frontend/testem.log
-/frontend/yarn-error.log
+/front/.env*
+/front/.pnp*
+/front/.sass-cache
+/front/connect.lock
+/front/coverage/
+/front/libpeerconnection.log
+/front/npm-debug.log*
+/front/testem.log
+/front/yarn-error.log
 
 # ember-try
-/frontend/.node_modules.ember-try/
-/frontend/bower.json.ember-try
-/frontend/package.json.ember-try
+/front/.node_modules.ember-try/
+/front/bower.json.ember-try
+/front/package.json.ember-try
